@@ -1,0 +1,49 @@
+.login{
+    display: flex;
+    margin: auto;
+}
+.cardy{
+   top: 25%;
+   opacity: 80%;
+   margin: auto;
+   left: 25%;
+     
+}
+
+.center{
+    display: flex;
+     align-items: center;
+     align-content: center;
+     justify-content: center;
+     margin-top: 200px;
+     z-index: 2;
+     
+     margin-left: auto;
+     margin-right: auto;
+}
+.center div {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    
+    
+}
+
+.btns{
+    background-color: cornsilk;
+}
+
+
+.bg{
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    object-fit: cover;
+}
+/*.bimg{
+    z-index: 1;
+    position: fixed;
+    top: 10rem;
+
+}*/

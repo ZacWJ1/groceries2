@@ -1,0 +1,9 @@
+.gradient_bg {
+    /* global 94%+ browsers support */
+    background: linear-gradient(90deg, rgba(57, 237, 116, 1) 0%, rgba(190, 243, 195, 1) 42%, rgba(255, 250, 223, 1) 100%);
+}
+.navi{
+    display: flex;
+    justify-content: space-between;
+}
+            
