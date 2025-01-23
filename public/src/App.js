@@ -19,7 +19,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:4444/user', { withCredentials: true })
+    axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true })
         .then(response => {
             if (response.data.user) {
                 setIsLoggedIn(true);

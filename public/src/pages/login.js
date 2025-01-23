@@ -10,10 +10,10 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4444/login", { email, password }, { withCredentials: true })
+        axios.post("https://groceries2backend.onrender.com/login", { email, password }, { withCredentials: true })
             .then(result => {
                 if (result.data === "Success") {
-                    axios.get('http://localhost:4444/user', { withCredentials: true })
+                    axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true })
                         .then(response => {
                             if (response.data.user) {
                               setIsLoggedIn(true);
