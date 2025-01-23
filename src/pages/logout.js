@@ -7,7 +7,7 @@ function Logout({ setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        axios.post("http://localhost:4444/logout", {}, { withCredentials: true })
+        axios.post("https://groceries2backend.onrender.com/logout", {}, { withCredentials: true })
             .then(response => {
                 if (response.status === 200) {
                     setIsLoggedIn(false);
