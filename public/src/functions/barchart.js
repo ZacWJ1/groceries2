@@ -22,7 +22,7 @@ const Barchart = () => {
 
   useEffect(() => {
     const fetchGrocers = async () => {
-      const res = await axios.get('http://localhost:4444/groceries');
+      const res = await axios.get('https://groceries2backend.onrender.com/groceries');
       setGrocers(res.data);
     };
     fetchGrocers();

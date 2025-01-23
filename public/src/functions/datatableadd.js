@@ -24,7 +24,7 @@ const Datatableadd = ({ refreshGrocers }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4444/groceries', groceries);
+      await axios.post('https://groceries2backend.onrender.com/groceries', groceries);
       setGroceries({
         grocery: '',
         cost: '',
