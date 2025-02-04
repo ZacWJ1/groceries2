@@ -13,7 +13,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
         axios.post('https://groceries2backend.onrender.com/login', { email, password }, { withCredentials: true })
             .then(result => {
                 if (result.data === "Success") {
-                    axios.get('https://groceries2backend.onrender.com/user', /*{ withCredentials: true }*/)
+                    axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true })
                         .then(response => {
                             if (response.data.user) {
                               setIsLoggedIn(true);
