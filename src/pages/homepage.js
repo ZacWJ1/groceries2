@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from '../functions/useAuth';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import * as ReactBootStrap from "react-bootstrap";
@@ -11,54 +11,96 @@ import Barchart from '../functions/barchart';
 import './homepage.css';
 
 const HomePage = () => {
-  const [items, setItems] = useState([]); const [grocers, setGroceries] = useState([]); const location = useLocation(); const navigate = useNavigate(); const [user, setUser] = useState(location.state?.user); const [loading, setLoading] = useState(true); const fetchGrocers = async () => { const res = await axios.get('https://groceries2backend.onrender.com/groceries', { withCredentials: true }); setGroceries(res.data); }; useEffect(() => { const fetchUser = async () => { try { const response = await axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true }); if (response.data.user) { setUser(response.data.user); } else { navigate('/login'); } } catch (error) { navigate('/login'); } }; const fetchItems = async () => { const res = await axios.get('https://groceries2backend.onrender.com/items', { withCredentials: true }); setItems(res.data); }; const fetchData = async () => { if (!user) { await fetchUser(); } await fetchItems(); await fetchGrocers(); setLoading(false); }; fetchData(); }, [user, navigate]); if (loading) { return <center><h1>Loading...</h1></center>; } const handleDelete = async (id) => { try { await axios.delete(`https://groceries2backend.onrender.com/items/${id}`, { withCredentials: true }); setItems(items.filter((food) => food._id !== id)); } catch (error) { console.error('Error deleting item', error); } }; const handleGroceryDelete = async (id) => { try { await axios.delete(`https://groceries2backend.onrender.com/groceries/${id}`, { withCredentials: true }); setGroceries(grocers.filter((grocery) => grocery._id !== id)); // Refresh grocers
-   } catch (error) { console.error('Error deleting item', error); } };
-
-
-  /*const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [grocers, setGroceries] = useState([]);
-//above is non home.js stuff
-const location = useLocation();
-    const navigate = useNavigate();
-    const [user, setUser] = useState(location.state?.user);
-    const [loading, setLoading] = useState(!user);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(location.state?.user);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => { const fetchUser = async () => { try { const response = await axios.get('http://localhost:4444/user', { withCredentials: true }); if (response.data.user) { setUser(response.data.user); } else { navigate('/login'); } } catch (error) { navigate('/login'); } };
-
-
-//below is non home.js stuff
-  const fetchItems = async () => {
-    const res = await axios.get('http://localhost:4444/items');
-    setItems(res.data);
+  // Function to check token expiration
+  const checkTokenExpiration = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      const currentTime = Date.now() / 1000;
+      if (decodedToken.exp < currentTime) {
+        localStorage.removeItem('token');
+        navigate('/login');
+      }
+    } else {
+      navigate('/login');
+    }
   };
 
-  const fetchGrocers = async () => {
-    const res = await axios.get('http://localhost:4444/groceries');
-    setGroceries(res.data);
-  };
-  const fetchData = async () => { if (!user) { await fetchUser(); } await fetchItems(); await fetchGrocers(); setLoading(false); }; fetchData(); }, [user, navigate]); if (loading) { return <center><h1>Loading...</h1></center>; }
-  /*useEffect(() => {
-    fetchItems();
-    fetchGrocers();
-  }, []);*/
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('https://groceries2backend.onrender.com/user', {
+          headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        });
+        if (response.data.user) {
+          setUser(response.data.user);
+        } else {
+          navigate('/login');
+        }
+      } catch (error) {
+        navigate('/login');
+      }
+    };
 
-  /*const handleDelete = async (id) => {
+    const fetchItems = async () => {
+      const res = await axios.get('https://groceries2backend.onrender.com/items', {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+      });
+      setItems(res.data);
+    };
+
+    const fetchGrocers = async () => {
+      const res = await axios.get('https://groceries2backend.onrender.com/groceries', {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+      });
+      setGroceries(res.data);
+    };
+
+    const fetchData = async () => {
+      checkTokenExpiration();
+      if (!user) {
+        await fetchUser();
+      }
+      await fetchItems();
+      await fetchGrocers();
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [user, navigate]);
+
+  if (loading) {
+    return <center><h1>Loading...</h1></center>;
+  }
+
+  const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4444/items/${id}`);
+      await axios.delete(`https://groceries2backend.onrender.com/items/${id}`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+      });
       setItems(items.filter((food) => food._id !== id));
     } catch (error) {
-      console.error("Error deleting item", error);
+      console.error('Error deleting item', error);
     }
   };
 
   const handleGroceryDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4444/groceries/${id}`);
-      await fetchGrocers(); // Refresh grocers
+      await axios.delete(`https://groceries2backend.onrender.com/groceries/${id}`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+      });
+      setGroceries(grocers.filter((grocery) => grocery._id !== id));
     } catch (error) {
-      console.error("Error deleting item", error);
+      console.error('Error deleting item', error);
     }
-  };*/
+  };
 
   return (
     <div className='bg bg-cover'>

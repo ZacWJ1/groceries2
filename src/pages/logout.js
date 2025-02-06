@@ -10,6 +10,8 @@ function Logout({ setIsLoggedIn }) {
         axios.post("https://groceries2backend.onrender.com/logout", {}, { withCredentials: true })
             .then(response => {
                 if (response.status === 200) {
+                    // Clear the JWT from localStorage
+                    localStorage.removeItem('token');
                     setIsLoggedIn(false);
                     navigate("/login");
                 }
@@ -18,7 +20,9 @@ function Logout({ setIsLoggedIn }) {
                 console.error("Error logging out:", error);
             });
     };
-    const button={marginRight:'20px', fontSize:'1.2rem', fontWeight:'700', padding:'0.3rem 1.4rem'}
+
+    const button = { marginRight: '20px', fontSize: '1.2rem', fontWeight: '700', padding: '0.3rem 1.4rem' };
+
     return (
         <Button variant="contained" color="error" style={button} onClick={handleLogout}>
             Logout

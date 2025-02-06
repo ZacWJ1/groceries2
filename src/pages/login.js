@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode"; // Import jwt-decode
 import { Grid, Link, Button, Paper, TextField, Typography } from "@mui/material";
 
 function Login({ setIsLoggedIn, isLoggedIn }) {
@@ -8,29 +9,47 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        axios.post('https://groceries2backend.onrender.com/login', { email, password }, { withCredentials: true })
-            .then(result => {
-                if (result.data === "Success") {
-                    axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true })
-                        .then(response => {
-                            if (response.data.user) {
-                              setIsLoggedIn(true);
-                              navigate("/home", { state: { user: response.data.user } });
-                            }
-                        });
-                } else {
-                    alert("Login failed");
-                }
-            })
-            .catch(err => console.log(err));
+        try {
+            const result = await axios.post('https://groceries2backend.onrender.com/login', { email, password });
+            if (result.data.success) {
+                const token = result.data.token;
+                localStorage.setItem('token', token); // Store the token in localStorage
+                const decodedToken = jwt_decode(token);
+                const user = { id: decodedToken.id, name: decodedToken.name, email: decodedToken.email };
+                setIsLoggedIn(true);
+                navigate("/home", { state: { user } });
+            } else {
+                alert("Login failed");
+            }
+        } catch (err) {
+            console.log(err);
+        }
     };
+
+    // Check token expiration on component mount
+    useEffect(() => {
+        const checkTokenExpiration = () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                const decodedToken = jwt_decode(token);
+                const currentTime = Date.now() / 1000;
+                if (decodedToken.exp < currentTime) {
+                    localStorage.removeItem('token');
+                    setIsLoggedIn(false);
+                    navigate('/login');
+                }
+            }
+        };
+
+        checkTokenExpiration();
+    }, [navigate, setIsLoggedIn]);
 
     const paperStyle = { padding: "2rem", margin: "100px auto", borderRadius: "1rem", boxShadow: "10px 10px 10px" };
     const heading = { fontSize: "2.5rem", fontWeight: "600" };
     const row = { display: "flex", marginTop: "2rem" };
-    const btnStyle={marginTop:"2rem", fontSize:"1.2rem", fontWeight:"700", backgroundColor:"blue", borderRadius:"0.5rem"};
+    const btnStyle = { marginTop: "2rem", fontSize: "1.2rem", fontWeight: "700", backgroundColor: "blue", borderRadius: "0.5rem" };
     const label = { fontWeight: "700" };
 
     return (
