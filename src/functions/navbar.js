@@ -46,7 +46,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             <Nav.Link href="/items/new">Recipes</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
             <Nav.Link href="#link">Logout</Nav.Link>
-            
+            <Logout /*setIsLoggedIn={setIsLoggedIn}*/ />
 
                             
                         </>
