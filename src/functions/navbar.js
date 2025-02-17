@@ -38,6 +38,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           <Nav className="me-auto underline">
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/signup">Signup</Nav.Link>
+          <Logout /*setIsLoggedIn={setIsLoggedIn}*/ />
             
             {isLoggedIn ? (
                         <>
