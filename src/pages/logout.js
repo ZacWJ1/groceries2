@@ -18,7 +18,7 @@ function Logout({ setIsLoggedIn }) {
                 console.error("Error logging out:", error);
             });
     };
-    const button={marginRight:'20px', fontSize:'1.2rem', fontWeight:'700', padding:'0.3rem 1.4rem'}
+    const button={marginRight:'20px', fontSize:'1.2rem', fontWeight:'700', padding:'0.3rem 1.4rem', left:'700px'}
     return (
         <Button variant="outlined" color="error" style={button} onClick={handleLogout}>
             Logout
