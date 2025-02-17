@@ -36,12 +36,12 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto underline">
-            
+          <Nav.Link href="/login">Login</Nav.Link>
+          <Nav.Link href="/signup">Signup</Nav.Link>
             
             {isLoggedIn ? (
                         <>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/signup">Signup</Nav.Link>
+            
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/items/new">Recipes</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
