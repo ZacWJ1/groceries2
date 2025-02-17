@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Grid, Link, Button, Paper, TextField, Typography } from "@mui/material";
-import Loader from "../functions/loader";
+
 
 function Login({ setIsLoggedIn, isLoggedIn }) {
     const [email, setEmail] = useState("");
@@ -12,7 +12,6 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        setIsLoading(true)
         axios.post('https://groceries2backend.onrender.com/login', { email, password }, { withCredentials: true })
             .then(result => {
                 if (result.data === "Success") {
@@ -20,13 +19,11 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                         .then(response => {
                             if (response.data.user) {
                               setIsLoggedIn(true);
-                              setIsLoading(false);
                               navigate("/home", { state: { user: response.data.user } });
                             }
                         });
                 } else {
                     alert("Login failed");
-                    setIsLoading(false);
                 }
             })
             .catch(err => console.log(err));
@@ -51,12 +48,6 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                             <TextField sx={{ label: { fontWeight: '700', fontSize: "1.3rem" } }} label="Password" fullWidth variant="outlined" type="password" placeholder="Enter Password" name="password" onChange={(e) => setPassword(e.target.value)} />
                         </span>
                         <Button style={btnStyle} variant="contained" type="submit">Login</Button>
-                        {isLoading && (
-                        <Loader
-                        width="96"
-                        visible={true}
-                         />
-                        )}
                     </form>
                     <p>Don't have an account? <Link href="/signup">SignUp</Link></p>
                 </Paper>
