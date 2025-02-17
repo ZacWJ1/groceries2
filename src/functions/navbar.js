@@ -42,7 +42,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             {isLoggedIn ? (
                         <>
             
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/items/new">Recipes</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
             <Nav.Link href="#link">Logout</Nav.Link>
