@@ -38,7 +38,7 @@ function App() {
     <Routes>
     
     <Route path='/login' element={isLoggedIn ? <Navigate to="/home" /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-    <Route path="/signup" element={isLoggedIn ? <Navigate to="/home" /> : <SignUp setIsLoggedIn={setIsLoggedIn} />} />
+    <Route path="/signup" element={isLoggedIn ? <Navigate to="/home" /> : <SignUp /*setIsLoggedIn={setIsLoggedIn} don't need it here*/  />} />
     <Route path='/items/new' element={<NewRecipePage/>}/>
     <Route path='/items/:id' element={<RecipePage/>}/>
     <Route path='/home' element={<HomePage />} />

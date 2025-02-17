@@ -37,10 +37,11 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto underline">
             
+            
+            {isLoggedIn ? (
+                        <>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Signup</Nav.Link>
-            {!isLoggedIn ? (
-                        <>
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/items/new">Recipes</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
@@ -50,7 +51,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
                             
                         </>
                     ) : (
-                        <Logout setIsLoggedIn={setIsLoggedIn} />
+                        <Logout /*setIsLoggedIn={setIsLoggedIn}*/ />
                     )}
           </Nav>
         </Navbar.Collapse>
