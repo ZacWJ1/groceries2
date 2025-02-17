@@ -45,7 +45,8 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/items/new">Recipes</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
-            <Nav.Link href="#link">Logout</Nav.Link>
+            <Nav.Link href="/logout">Logoutt</Nav.Link>
+            <Nav.Link element={<Logout/>} setIsLoggedIn={setIsLoggedIn}>Logout</Nav.Link>
             <Logout setIsLoggedIn={setIsLoggedIn} />
 
                             
