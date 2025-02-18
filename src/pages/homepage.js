@@ -27,9 +27,15 @@ const HomePage = () => {
                 { navigate('/login'); } };
         const fetchItems = async () => {
         const res = await axios.get('https://groceries2backend.onrender.com/items', { withCredentials: true }); setItems(res.data); };
-         const fetchData = async () => { if (!user) {
-           await fetchUser(); } await fetchItems(); await fetchGrocers(); setLoading(false); }; fetchData(); }, [user, navigate]);
+        
+        const fetchData = async () => { if (!user) {
+           await fetchUser();
+           } await fetchItems();
+            await fetchGrocers();
+             setLoading(false); };
+              fetchData(); }, [user, navigate]);
             if (loading) { return <center><h1>Loading...</h1></center>; } 
+            
             const handleDelete = async (id) => {
                try { await axios.delete(`https://groceries2backend.onrender.com/items/${id}`, { withCredentials: true });
                 setItems(items.filter((food) => food._id !== id)); }

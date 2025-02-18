@@ -4,10 +4,11 @@ import axios from "axios";
 import { Grid, Link, Button, Paper, TextField, Typography } from "@mui/material";
 
 
+
 function Login({ setIsLoggedIn, isLoggedIn }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const[isLoading,setIsLoading]=useState(true)
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
@@ -20,6 +21,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                             if (response.data.user) {
                               setIsLoggedIn(true);
                               navigate("/home", { state: { user: response.data.user } });
+                              if (loading) { return <center><h1>Loading...</h1></center>; } 
                             }
                         });
                 } else {
