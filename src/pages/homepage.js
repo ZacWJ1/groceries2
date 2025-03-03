@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Card, Button,Table, Container, Row, Col } from 'react-bootstrap';
+import { Table, Container, Row, Col, Button } from 'react-bootstrap';
 import { CircularProgress } from '@mui/material';
 import Datatableadd from '../functions/datatableadd';
 import Piechart from '../functions/piechart';
@@ -13,6 +12,7 @@ const HomePage = () => {
   const [items, setItems] = useState([]);
   const [grocers, setGroceries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshKey, setRefreshKey] = useState(0); // Add a refreshKey state
   const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState(location.state?.user);
@@ -20,6 +20,11 @@ const HomePage = () => {
   const fetchGrocers = async () => {
     const res = await axios.get('https://groceries2backend.onrender.com/groceries', { withCredentials: true });
     setGroceries(res.data);
+  };
+
+  const fetchItems = async () => {
+    const res = await axios.get('https://groceries2backend.onrender.com/items', { withCredentials: true });
+    setItems(res.data);
   };
 
   useEffect(() => {
@@ -36,11 +41,6 @@ const HomePage = () => {
       }
     };
 
-    const fetchItems = async () => {
-      const res = await axios.get('https://groceries2backend.onrender.com/items', { withCredentials: true });
-      setItems(res.data);
-    };
-
     const fetchData = async () => {
       if (!user) {
         await fetchUser();
@@ -51,12 +51,18 @@ const HomePage = () => {
     };
 
     fetchData();
-  }, [user, navigate]);
+  }, [user, navigate, refreshKey]); // Add refreshKey as a dependency
+
+  const handleRefresh = () => {
+    // Increment refreshKey to trigger re-fetch
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://groceries2backend.onrender.com/items/${id}`, { withCredentials: true });
       setItems(items.filter((food) => food._id !== id));
+      handleRefresh(); // Refresh charts and other components after delete
     } catch (error) {
       console.error('Error deleting item', error);
     }
@@ -66,6 +72,7 @@ const HomePage = () => {
     try {
       await axios.delete(`https://groceries2backend.onrender.com/groceries/${id}`, { withCredentials: true });
       setGroceries(grocers.filter((grocery) => grocery._id !== id));
+      handleRefresh(); // Refresh charts and other components after delete
     } catch (error) {
       console.error('Error deleting item', error);
     }
@@ -85,16 +92,16 @@ const HomePage = () => {
       <Container>
         <Row>
           <Col md={6}>
-            <Piechart grocers={grocers} />
+            <Piechart grocers={grocers} refreshKey={refreshKey} />
           </Col>
           <Col md={6}>
-            <Barchart grocers={grocers} />
+            <Barchart grocers={grocers} refreshKey={refreshKey} />
           </Col>
         </Row>
       </Container>
       <div>
         <Container>
-          <Datatableadd refreshGrocers={fetchGrocers} />
+          <Datatableadd refreshGrocers={fetchGrocers} onRefresh={handleRefresh} />
         </Container>
         <Container>
           <Table striped bordered hover>

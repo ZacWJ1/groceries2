@@ -1,27 +1,29 @@
-import React,{useState, useEffect} from "react";
-import { Chart as ChartJS, BarElement, Tooltip, Legend,  Title} from 'chart.js';
+import React, { useState, useEffect } from "react";
+import { Chart as ChartJS, BarElement, Tooltip, Legend, Title } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import axios from 'axios'
-//import { Bar } from "react-chartjs-2";
+import axios from 'axios';
+
 ChartJS.register(BarElement, Tooltip, Legend, Title);
 
-//import { PieChart } from '@mui/x-charts/PieChart';
-
-
-const Piechart = () => {
-
+const Piechart = ({ refreshKey }) => { // Accept refreshKey as a prop
   const [grocers, setGrocers] = useState([]);
   const [unique, setUnique] = useState([]);
   const [counts, setCounts] = useState({});
 
+  // Fetch grocery data when refreshKey changes
   useEffect(() => {
     const fetchGrocers = async () => {
-      const res = await axios.get('https://groceries2backend.onrender.com/groceries');
-      setGrocers(res.data);
+      try {
+        const res = await axios.get('https://groceries2backend.onrender.com/groceries');
+        setGrocers(res.data);
+      } catch (error) {
+        console.error("Error fetching grocery data", error);
+      }
     };
     fetchGrocers();
-  }, []);
-//yessir
+  }, [refreshKey]); // Add refreshKey as a dependency
+
+  // Process grocery data whenever the grocers state changes
   useEffect(() => {
     const uniqueTypes = [...new Set(grocers.map(item => item.type))];
     setUnique(uniqueTypes);
@@ -33,6 +35,7 @@ const Piechart = () => {
     setCounts(countMap);
   }, [grocers]);
 
+  // Chart data configuration
   const data = {
     labels: unique,
     datasets: [
@@ -68,55 +71,13 @@ const Piechart = () => {
       },
     ],
   };
-   /* const [country, setCountry]= useState([]);
-    const [population, setPopulation]=useState([]);
-    useEffect( ()=>{
-      const getcountry=[];
-      const getpopulation=[];
-     const getdata= async()=>{
-       const reqData= await fetch('http://localhost:4444/groceries');
-       const resData= await reqData.json();
-       //console.log(resData);
-       //
-       
-       //
-       for(let i=0; i<resData.length; i++)
-       {
-        getcountry.push(resData[i].type);
-        getpopulation.push(resData[i].cost);
-        /*let getpopulation=resData[i].type
-        getpopulation.filter((resData[i].type)x=>x==='meat').length*/
-      /* }     
-       setCountry(getcountry);
-       setPopulation(getpopulation);
-     }
-   getdata();
-    },[])*/
-    
-    //trying to get count
-    /*
-    const langObject = resData.reduce((langs, { languages }) => {
-      return languages.nodes.reduce((repLangs, { name, color }) => {
-        if (!repLangs[name]) {
-          repLangs[name] = { count: 0, color };
-        }
-        repLangs[name].count += 1;
-        return repLangs;
-      }, langs);
-    }, {});
-  
-    const langArray = formatLanguagesForChart(langObject);
-  
-    return langArray.sort((a, b) => b.value - a.value).slice(0, 5)
-      */
-    //
 
   return (
     <React.Fragment>
       <div className="container-fluid">
         <h3 className="mt-3">View your distribution of groceries!</h3>
         <div className="row">
-          <div className="col-md-5 mb-3 mt-3 ">
+          <div className="col-md-5 mb-3 mt-3">
             <Pie
               width={100}
               height={100}
@@ -144,4 +105,4 @@ const Piechart = () => {
   );
 };
 
-export default Piechart
+export default Piechart;
