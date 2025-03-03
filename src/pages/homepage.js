@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Card, Button,Table, Container, Row, Col } from 'react-bootstrap';
-
+import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { CircularProgress } from '@mui/material';
 import Datatableadd from '../functions/datatableadd';
 import Piechart from '../functions/piechart';
@@ -98,7 +97,7 @@ const HomePage = () => {
           <Datatableadd refreshGrocers={fetchGrocers} />
         </Container>
         <Container>
-          <ReactBootStrap.Table striped bordered hover>
+          <Table striped bordered hover>
             <thead>
               <tr>
                 <th>Grocery</th>
@@ -118,7 +117,7 @@ const HomePage = () => {
                 </tr>
               ))}
             </tbody>
-          </ReactBootStrap.Table>
+          </Table>
         </Container>
       </div>
       <div className='container flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col'>
