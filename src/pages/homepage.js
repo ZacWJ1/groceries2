@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, Button,Table, Container, Row, Col } from 'react-bootstrap';
 import { CircularProgress } from '@mui/material';
 import Datatableadd from '../functions/datatableadd';
 import Piechart from '../functions/piechart';
