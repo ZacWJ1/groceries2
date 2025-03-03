@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
-import * as ReactBootStrap from "react-bootstrap";
+import { CircularProgress } from '@mui/material';
 import Datatableadd from '../functions/datatableadd';
 import Piechart from '../functions/piechart';
 import Barchart from '../functions/barchart';
@@ -11,85 +11,73 @@ import './homepage.css';
 
 const HomePage = () => {
   const [items, setItems] = useState([]);
-   const [grocers, setGroceries] = useState([]);
-    const location = useLocation();
-     const navigate = useNavigate();
-      const [user, setUser] = useState(location.state?.user);
-       const [loading, setLoading] = useState(true);
-        const fetchGrocers = async () => { const res = await axios.get('https://groceries2backend.onrender.com/groceries',
-          { withCredentials: true });
-           setGroceries(res.data); };
-            useEffect(() => { const fetchUser = async () => {
-               try { const response = await axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true });
-                if (response.data.user) { setUser(response.data.user); } 
-                else { navigate('/login'); }
-               } catch (error)
-                { navigate('/login'); } };
-        const fetchItems = async () => {
-        const res = await axios.get('https://groceries2backend.onrender.com/items', { withCredentials: true }); setItems(res.data); };
-        
-        const fetchData = async () => { if (!user) {
-           await fetchUser();
-           } await fetchItems();
-            await fetchGrocers();
-             setLoading(false); };
-              fetchData(); }, [user, navigate]);
-            if (loading) { return <center><h1>Loading...</h1></center>; } 
-            
-            const handleDelete = async (id) => {
-               try { await axios.delete(`https://groceries2backend.onrender.com/items/${id}`, { withCredentials: true });
-                setItems(items.filter((food) => food._id !== id)); }
-                 catch (error) { console.error('Error deleting item', error); } };
-                  const handleGroceryDelete = async (id) => {
-                     try { await axios.delete(`https://groceries2backend.onrender.com/groceries/${id}`, { withCredentials: true });
-                      setGroceries(grocers.filter((grocery) => grocery._id !== id)); // Refresh grocers
-   } catch (error) { console.error('Error deleting item', error); } };
-
-
-  /*const [items, setItems] = useState([]);
   const [grocers, setGroceries] = useState([]);
-//above is non home.js stuff
-const location = useLocation();
-    const navigate = useNavigate();
-    const [user, setUser] = useState(location.state?.user);
-    const [loading, setLoading] = useState(!user);
-
-    useEffect(() => { const fetchUser = async () => { try { const response = await axios.get('http://localhost:4444/user', { withCredentials: true }); if (response.data.user) { setUser(response.data.user); } else { navigate('/login'); } } catch (error) { navigate('/login'); } };
-
-
-//below is non home.js stuff
-  const fetchItems = async () => {
-    const res = await axios.get('http://localhost:4444/items');
-    setItems(res.data);
-  };
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(location.state?.user);
 
   const fetchGrocers = async () => {
-    const res = await axios.get('http://localhost:4444/groceries');
+    const res = await axios.get('https://groceries2backend.onrender.com/groceries', { withCredentials: true });
     setGroceries(res.data);
   };
-  const fetchData = async () => { if (!user) { await fetchUser(); } await fetchItems(); await fetchGrocers(); setLoading(false); }; fetchData(); }, [user, navigate]); if (loading) { return <center><h1>Loading...</h1></center>; }
-  /*useEffect(() => {
-    fetchItems();
-    fetchGrocers();
-  }, []);*/
 
-  /*const handleDelete = async (id) => {
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('https://groceries2backend.onrender.com/user', { withCredentials: true });
+        if (response.data.user) {
+          setUser(response.data.user);
+        } else {
+          navigate('/login');
+        }
+      } catch (error) {
+        navigate('/login');
+      }
+    };
+
+    const fetchItems = async () => {
+      const res = await axios.get('https://groceries2backend.onrender.com/items', { withCredentials: true });
+      setItems(res.data);
+    };
+
+    const fetchData = async () => {
+      if (!user) {
+        await fetchUser();
+      }
+      await fetchItems();
+      await fetchGrocers();
+      setLoading(false); // Stop loading once data is fetched
+    };
+
+    fetchData();
+  }, [user, navigate]);
+
+  const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4444/items/${id}`);
+      await axios.delete(`https://groceries2backend.onrender.com/items/${id}`, { withCredentials: true });
       setItems(items.filter((food) => food._id !== id));
     } catch (error) {
-      console.error("Error deleting item", error);
+      console.error('Error deleting item', error);
     }
   };
 
   const handleGroceryDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4444/groceries/${id}`);
-      await fetchGrocers(); // Refresh grocers
+      await axios.delete(`https://groceries2backend.onrender.com/groceries/${id}`, { withCredentials: true });
+      setGroceries(grocers.filter((grocery) => grocery._id !== id));
     } catch (error) {
-      console.error("Error deleting item", error);
+      console.error('Error deleting item', error);
     }
-  };*/
+  };
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress />
+      </div>
+    );
+  }
 
   return (
     <div className='bg bg-cover'>
@@ -144,7 +132,7 @@ const location = useLocation();
                   <Card.Img variant="top" src={food.image} alt={food.item} />
                   <Card.Body>
                     <Card.Title>{food.item}</Card.Title>
-                    <Card.Text>Protein:{food.protein}g</Card.Text>
+                    <Card.Text>Protein: {food.protein}g</Card.Text>
                     <Card.Text>Fat: {food.fat}g</Card.Text>
                     <Card.Text>Carbs: {food.carbs}g</Card.Text>
                     <Link to={`/items/${food._id}`}>
