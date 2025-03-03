@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import Link from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import { Table, Container, Row, Col, Button,Card } from 'react-bootstrap';
 import { CircularProgress } from '@mui/material';
 import Datatableadd from '../functions/datatableadd';
