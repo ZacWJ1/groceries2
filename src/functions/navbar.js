@@ -24,7 +24,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <Navbar expand="xl" className=" gradient_bg navi">
       <Container>
-      <Navbar.Brand href="#home" className='font-bold'>
+      <Navbar.Brand href="/home" className='font-bold'>
       <img
               alt=""
               src={logoo}
@@ -44,7 +44,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/items/new">Recipes</Nav.Link>
-            <Nav.Link href="#link">About</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
             {/*{<Nav.Link href="/logout">Logoutt</Nav.Link>}*/}
       
             <Logout setIsLoggedIn={setIsLoggedIn} />

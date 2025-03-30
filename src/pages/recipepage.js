@@ -19,7 +19,7 @@ const RecipePage = () => {
       
       useEffect(() => {
         const fetchItem = async () => {
-          const res = await axios.get(`https://groceries2backend.onrender.com/items/${id}`);
+          const res = await axios.get(`https://groceries2backend.onrender.com/items/${id}`, { withCredentials: true });
           setItem(res.data);
         };
         fetchItem();
