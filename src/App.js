@@ -10,7 +10,7 @@ import Loginpage from './pages/loginpage';
 import Login from './pages/login';
 import SignUp from './pages/signup';
 import axios from 'axios';
-import Home from "./pages/home";
+import AboutPage from "./pages/aboutpage";
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -42,6 +42,7 @@ function App() {
     <Route path='/items/new' element={<NewRecipePage/>}/>
     <Route path='/items/:id' element={<RecipePage/>}/>
     <Route path='/home' element={<HomePage />} />
+    <Route path='/about' element={<AboutPage />} />
     </Routes>
     </Router>
   );
