@@ -24,7 +24,7 @@ const Barchart = ({ refreshKey }) => {
   useEffect(() => {
     const fetchGrocers = async () => {
       try {
-        const res = await axios.get('https://groceries2backend.onrender.com/groceries');
+        const res = await axios.get('https://groceries2backend.onrender.com/groceries', { withCredentials: true });
         setGrocers(res.data);
       } catch (error) {
         console.error("Error fetching grocery data", error);
