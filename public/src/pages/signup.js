@@ -33,7 +33,7 @@ function SignUp(){
     return (
         <div>
             <Grid align="center" className="wrapper">
-                <Paper style={paperStyle} sx={{width: {
+                <Paper  sx={{width: {
                     xs: '80vw',     // 0
                     sm: '50vw',     // 600
                     md: '40vw',     // 900
