@@ -25,7 +25,7 @@ const Datatableadd = ({ refreshGrocers, onRefresh }) => {
     e.preventDefault();
     try {
       // Send POST request to add a new grocery
-      await axios.post('https://groceries2backend.onrender.com/groceries', groceries);
+      await axios.post('https://groceries2backend.onrender.com/groceries', groceries, { withCredentials: true });
       
       // Clear form fields
       setGroceries({
