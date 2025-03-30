@@ -22,7 +22,7 @@ const NewRecipePage = () => {
       const handleSubmit = async e => {
         e.preventDefault();
         await axios.post('https://groceries2backend.onrender.com/items', food, { withCredentials: true });
-        navigate('/');
+        navigate('/home');
       };
       
       return (
