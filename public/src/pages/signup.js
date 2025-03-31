@@ -26,24 +26,15 @@ function SignUp(){
                 }
             });
     };
-    const paperStyle = {padding: "2rem", margin: "100px auto"};
-    const heading = {fontSize:"2.5rem", fontWeight:"600"}
-    const row = {display:"flex", marginTop:"2rem"}
-    const btnStyle={marginTop:"2rem", fontSize:"1.2rem", fontWeight:"700", backgroundColor:"blue", borderRadius:"0.5rem"};
+    const paperStyle = { padding: "2rem", margin: "100px auto" };
+    const heading = { fontSize: "2.5rem", fontWeight: "600" };
+    const row = { display: "flex", marginTop: "2rem" };
+    const btnStyle = { marginTop: "2rem", fontSize: "1.2rem", fontWeight: "700", backgroundColor: "blue", borderRadius: "0.5rem" };
     return (
         <div>
             <Grid2 align="center" className="wrapper">
-                <Paper style={paperStyle} sx={{width: {
-                    xs: '80vw',     // 0
-                    sm: '50vw',     // 600
-                    md: '40vw',     // 900
-                    lg: '30vw',     // 1200
-                    xl: '20vw',     // 1536 
-                },
-                height:{
-                    lg: '50vh',     // 1200px and up
-                }}}>
-                    <Typography component="h1" variant="h5" style={heading}> Signup </Typography>
+                            <Paper style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
+                                <Typography component="h1" variant="h5" style={heading}>Login</Typography>
                     <form onSubmit={handleSignup}>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></TextField>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Email" variant="outlined" type="email" placeholder="Enter Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>                    
