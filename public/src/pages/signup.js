@@ -34,7 +34,7 @@ function SignUp(){
         <div>
             <Grid2 align="center" className="wrapper">
                             
-                                <Typography component="h1" variant="h5" style={heading}>Login</Typography>
+                               
                     <form onSubmit={handleSignup}>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></TextField>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Email" variant="outlined" type="email" placeholder="Enter Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>                    
