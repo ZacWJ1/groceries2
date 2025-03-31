@@ -63,12 +63,19 @@ const Barchart = ({ refreshKey }) => {
         <div className="row">
           <div className="col-md-5 mb-3 mt-3">
             <Bar
-              options={
-                text='Your Expirations'
-              }
               width={100}
               height={100}
               data={data}
+              options={{
+                responsive: true,
+                plugins: {
+                  title: {
+                    text: 'Your Groceries Chart',
+                    display: true,
+                    font: { size: 20 },
+                  },
+                },
+              }}
             />
           </div>
         </div>
