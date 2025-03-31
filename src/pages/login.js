@@ -46,7 +46,7 @@ function Login({ setIsLoggedIn }) {
     return (
         <div className="bg-success.bg-gradient"
         style={{
-            backgroundImage: {ImageTwo}, // Replace with your image path
+            src= {ImageTwo}, // Replace with your image path
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
