@@ -86,7 +86,7 @@ const Piechart = ({ refreshKey }) => { // Accept refreshKey as a prop
                 responsive: true,
                 plugins: {
                   title: {
-                    text: 'Your Groceries Chart',
+                    text: 'Your Groceries',
                     display: true,
                     font: { size: 20 },
                   },

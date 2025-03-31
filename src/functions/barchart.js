@@ -70,7 +70,7 @@ const Barchart = ({ refreshKey }) => {
                 responsive: true,
                 plugins: {
                   title: {
-                    text: 'Your Groceries Chart',
+                    text: 'Your Expirations',
                     display: true,
                     font: { size: 20 },
                   },
