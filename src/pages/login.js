@@ -44,14 +44,8 @@ function Login({ setIsLoggedIn }) {
     const label = { fontWeight: "700" };
 
     return (
-        <div className="bg-success.bg-gradient"
-        style={{
-            backgroundImage: {ImageTwo}, // Replace with your image path
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            minHeight: "100vh", // Ensure full viewport height
-        }}>
+        <div className="bg-success.bg-gradient login-background"
+        >
             
             <Grid2 align="center" className="wrapper">
             <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
