@@ -49,7 +49,7 @@ function SignUp(){
                                 </div>
                                 <h1 className='fs-1 font-bold underline ms-2 mt-2 text-success'>Groceries <br/>
             </h1>
-            <h2 className='fs-3 font-bold underline ms-2 mt-2 text-white bg-dark' >Eat Better When You Plan Better</h2>
+            <h2 className='fs-3 font-bold underline ms-2 mt-2 text-white bg-dark' >Plan Better, Eat Better</h2>
                 <Paper elevation={1} style={paperStyle} sx={{width: {
                     xs: '80vw',     // 0
                     sm: '50vw',     // 600
