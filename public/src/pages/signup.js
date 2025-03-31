@@ -33,7 +33,7 @@ function SignUp(){
     return (
         <div>
             <Grid2 align="center" className="wrapper">
-                            <Paper elevation={1} style={paperStyle} >
+                            <Paper elevation={1} >
                                 <Typography component="h1" variant="h5" style={heading}>Login</Typography>
                     <form onSubmit={handleSignup}>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></TextField>
