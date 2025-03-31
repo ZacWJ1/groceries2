@@ -20,6 +20,9 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   if(location.pathname === '/login') {
     return null
   }
+  if(location.pathname === '/signup') {
+    return null
+  }
   
   return (
     <Navbar expand="xl" className=" gradient_bg navi">
