@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Grid, Link, Button, Paper, TextField, Typography } from "@mui/material";
+import { Grid2, Link, Button, Paper, TextField, Typography } from "@mui/material";
 
 
 function SignUp(){
