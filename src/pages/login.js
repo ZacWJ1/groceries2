@@ -43,7 +43,7 @@ function Login({ setIsLoggedIn }) {
     return (
         <div>
             <Grid2 align="center" className="wrapper">
-                <Paper style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
+                <Paper elevation={1} style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
                     <Typography component="h1" variant="h5" style={heading}>Login</Typography>
                     {loading ? (
                         <CircularProgress />
