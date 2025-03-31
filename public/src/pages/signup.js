@@ -34,12 +34,7 @@ function SignUp(){
         <div>
             <div >
                             
-                    <form onSubmit={handleSignup}>
-                        <span style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></span>
-                        <span style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Email" variant="outlined" type="email" placeholder="Enter Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>                    
-                        <span style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Password" variant="outlined" type="password" placeholder="Enter Password" name="password" onChange={(e)=>setPassword(e.target.value)} />
-                        <button style={btnStyle} variant="contained" type="submit">SignUp</button>
-                    </form>
+                    
                     <p>Already have an account?</p>
                 
             </div>
