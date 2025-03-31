@@ -1,15 +1,14 @@
 .login-background {
-    position: relative;
+    background-image: url('./groceriesImage2.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     min-height: 100vh;
     
   }
 
-  .login-background::before{
-    
-    background-image: url('./groceriesImage.jpg'); /* Replace with your image path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.4;
-    z-index: -1;
+  .opa{
+    opacity: 1 !important;
   }
+
+  
