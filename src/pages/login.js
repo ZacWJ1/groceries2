@@ -48,7 +48,7 @@ function Login({ setIsLoggedIn }) {
         <div className="bg-success.bg-gradient login-background"
         >
             
-            <Grid2 align="center" className="wrapper opa">
+            <Grid2 align="center" className="wrapper">
             <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                     <img
                         src={Image} // Replace with your image path
