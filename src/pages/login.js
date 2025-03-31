@@ -42,6 +42,11 @@ function Login({ setIsLoggedIn }) {
 
     return (
         <div>
+            <video className='bg'
+        loop autoPlay muted 
+        src={Video} 
+        type="video/mp4"
+         />
             <Grid2 align="center" className="wrapper">
                 <Paper elevation={1} style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
                     <Typography component="h1" variant="h5" style={heading}>Login</Typography>
