@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Grid2, Link, Button, Paper, TextField, Typography, CircularProgress } from "@mui/material";
 import Image from "../assets/G.png"
+import ImageTwo from "../assets/groceriesImage.jpg"
 
 
 function Login({ setIsLoggedIn }) {
@@ -43,7 +44,14 @@ function Login({ setIsLoggedIn }) {
     const label = { fontWeight: "700" };
 
     return (
-        <div className="bg-success.bg-gradient">
+        <div className="bg-success.bg-gradient"
+        style={{
+            backgroundImage: {ImageTwo}, // Replace with your image path
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            minHeight: "100vh", // Ensure full viewport height
+        }}>
             
             <Grid2 align="center" className="wrapper">
             <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
