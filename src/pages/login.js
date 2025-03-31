@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Grid2, Link, Button, Paper, TextField, Typography, CircularProgress } from "@mui/material";
 import Image from "../assets/G.png"
-import ImageTwo from "../assets/groceriesImage.jpg"
+import './login.css'
+
 
 
 function Login({ setIsLoggedIn }) {
