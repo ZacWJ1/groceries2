@@ -32,7 +32,7 @@ function SignUp(){
                 }
             });
     };
-    const paperStyle = {padding: "2rem", margin: "100px auto", borderRadius:"1rem", boxShadow: "10px 10px 10px"};
+    const paperStyle = {padding: "2rem", margin: "100px auto", borderRadius:"1rem"};
     const heading = {fontSize:"2.5rem", fontWeight:"600"}
     const row = {display:"flex", marginTop:"2rem"}
     const btnStyle={marginTop:"2rem", fontSize:"1.2rem", fontWeight:"700", backgroundColor:"blue", borderRadius:"0.5rem"};
@@ -50,7 +50,7 @@ function SignUp(){
                                 <h1 className='fs-1 font-bold underline ms-2 mt-2 text-success'>Groceries <br/>
             </h1>
             <h2 className='fs-3 font-bold underline ms-2 mt-2 text-white bg-dark' >Eat Better When You Plan Better</h2>
-                {/*<Paper elevation={1} style={paperStyle} sx={{width: {
+                <Paper elevation={0} style={paperStyle} sx={{width: {
                     xs: '80vw',     // 0
                     sm: '50vw',     // 600
                     md: '40vw',     // 900
@@ -59,7 +59,7 @@ function SignUp(){
                 },
                 height:{
                     lg: '60vh',     // 1200px and up
-                }}}>*/}
+                }}}>
                     <Typography component="h1" variant="h5" style={heading}> Signup </Typography>
                     <form onSubmit={handleSignup}>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></TextField>
@@ -68,7 +68,7 @@ function SignUp(){
                         <Button style={btnStyle} variant="contained" type="submit">SignUp</Button>
                     </form>
                     <p>Already have an account?<Link href="/login"> Login</Link></p>
-                {/*</Paper>*/}
+                </Paper>
             </Grid2>
         </div>
     )
