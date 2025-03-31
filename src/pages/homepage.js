@@ -89,9 +89,9 @@ const HomePage = () => {
 
   return (
     <div className='bg bg-cover'>
-      <h2 className='text-3xl font-bold underline mt-2'>Welcome to Groceries {user && user.name}</h2>
-        <h3>Add groceries to the table below to display them in the charts</h3>
-        <h3>Go to the Recipes page to save your recipes and they'll display on your homepage</h3>
+      <h2 className='fs-1 font-bold underline ms-2 mt-2'>Welcome to Groceries {user && user.name}</h2>
+        <h3 className='ms-2 mt-2 fs-5'>Add groceries to the table below to display them in the charts</h3>
+        <h3 className='ms-2 mt-2 fs-5'>Go to the Recipes page to save your recipes and they'll display on your homepage</h3>
       <Container>
         <Row>
           <Col md={6}>
