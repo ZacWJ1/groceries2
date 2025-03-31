@@ -4,13 +4,8 @@
     
   }
 
-  .login-background ::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  .login-background::before{
+    
     background-image: url('./groceriesImage.jpg'); /* Replace with your image path */
     background-size: cover;
     background-repeat: no-repeat;
