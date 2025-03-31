@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Grid2, Link, Button, Paper, TextField, Typography, CircularProgress } from "@mui/material";
+import Image from "../assets/G.png"
+
 
 function Login({ setIsLoggedIn }) {
     const [email, setEmail] = useState("");
@@ -46,7 +48,7 @@ function Login({ setIsLoggedIn }) {
             <Grid2 align="center" className="wrapper">
             <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                     <img
-                        src="groceries2/src/functions/G.png" // Replace with your image path
+                        src={Image} // Replace with your image path
                         alt="Groceries Logo"
                         style={{ maxWidth: '150px' }} // Adjust size as needed
                     />
