@@ -41,7 +41,7 @@ function Login({ setIsLoggedIn }) {
     const label = { fontWeight: "700" };
 
     return (
-        <div>
+        <div className="bg-success.bg-gradient">
             
             <Grid2 align="center" className="wrapper">
             <img src="groceries2/src/functions/G.png" class="img-thumbnail rounded mx-auto d-block"></img>
