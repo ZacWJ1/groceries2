@@ -89,7 +89,7 @@ const HomePage = () => {
 
   return (
     <div className='bg bg-cover'>
-      <h2 className='fs-1 font-bold underline ms-2 mt-2'>Welcome to Groceries {user && user.name}</h2>
+      <h2 className='fs-1 font-bold underline ms-2 mt-2'>Welcome to the Groceries app, {user && user.name}</h2>
         <h3 className='ms-2 mt-2 fs-5'>Add groceries to the table below to display them in the charts</h3>
         <h3 className='ms-2 mt-2 fs-5'>Go to the Recipes page to save your recipes and they'll display on your homepage</h3>
       <Container>
@@ -131,9 +131,7 @@ const HomePage = () => {
         </Container>
       </div>
       <div className='container flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col'>
-        <h2 className="font-semibold mb-6">
-          {`Keep track of what's in your fridge with ease using your item dashboard.`}
-        </h2>
+        
         <Container>
           <Row>
             {items.map((food) => (

@@ -103,7 +103,7 @@ const Datatableadd = ({ refreshGrocers, onRefresh }) => {
             </Form.Group>
           </Col>
         </Row>
-        <Button md={2} className="add btn-sm w-25 mt-3" type="submit">ADD</Button>
+        <Button md={2} className="add btn-sm w-25 mt-3 mb-3" type="submit">ADD</Button>
       </Form>
     </Container>
   );
