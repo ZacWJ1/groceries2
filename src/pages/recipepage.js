@@ -30,7 +30,7 @@ const RecipePage = () => {
       
       <Card>
       <div style={{ maxHeight: '500px', overflow: 'hidden' }}>
-          <Card.Img className="img-fluid" variant="top" src={food.image} alt={food.title} />
+          <Card.Img className="img-fluid " style="object-fit: cover" variant="top" src={food.image} alt={food.title} />
         </div>
         <Card.Body>
           <Card.Title>{food.item}</Card.Title>
