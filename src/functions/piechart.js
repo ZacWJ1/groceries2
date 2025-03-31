@@ -75,7 +75,7 @@ const Piechart = ({ refreshKey }) => { // Accept refreshKey as a prop
   return (
     <React.Fragment>
       <div className="container-fluid">
-        <h3 className="mt-3">View your distribution of groceries!</h3>
+        
         <div className="row">
           <div className="col-md-5 mb-3 mt-3">
             <Pie

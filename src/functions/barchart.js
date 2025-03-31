@@ -59,10 +59,13 @@ const Barchart = ({ refreshKey }) => {
   return (
     <React.Fragment>
       <div className="container-fluid">
-        <h3 className="mt-3">Check when your food expires!</h3>
+        
         <div className="row">
           <div className="col-md-5 mb-3 mt-3">
             <Bar
+              options={
+                text='Your Expirations'
+              }
               width={100}
               height={100}
               data={data}
