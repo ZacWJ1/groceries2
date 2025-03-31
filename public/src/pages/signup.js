@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Grid2, Link, Button, Paper, TextField, Typography } from "@mui/material";
+import { Link, Button } from "@mui/material";
 
 
 function SignUp(){
@@ -32,9 +32,8 @@ function SignUp(){
     const btnStyle = { marginTop: "2rem", fontSize: "1.2rem", fontWeight: "700", backgroundColor: "blue", borderRadius: "0.5rem" };
     return (
         <div>
-            <Grid2 >
-                            <Paper elevation={1} style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
-                                <Typography component="h1" variant="h5" style={heading}>Login</Typography>
+            <div >
+                            
                     <form onSubmit={handleSignup}>
                         <span style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></span>
                         <span style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth label="Email" variant="outlined" type="email" placeholder="Enter Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>                    
@@ -42,8 +41,8 @@ function SignUp(){
                         <Button style={btnStyle} variant="contained" type="submit">SignUp</Button>
                     </form>
                     <p>Already have an account?<Link href="/login"> Login</Link></p>
-                </Paper>
-            </Grid2>
+                
+            </div>
         </div>
     )
 }
