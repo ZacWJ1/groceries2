@@ -32,7 +32,7 @@ function SignUp(){
     const btnStyle = { marginTop: "2rem", fontSize: "1.2rem", fontWeight: "700", backgroundColor: "blue", borderRadius: "0.5rem" };
     return (
         <div>
-            <Grid2 align="center" className="wrapper">
+            <Grid2 >
                             <Paper elevation={1} style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
                                 <Typography component="h1" variant="h5" style={heading}>Login</Typography>
                     <form onSubmit={handleSignup}>
