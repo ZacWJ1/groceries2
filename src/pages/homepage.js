@@ -120,7 +120,7 @@ const HomePage = () => {
               {grocers.map((groceryData) => (
                 <tr key={groceryData.id}>
                   <td>{groceryData.grocery}</td>
-                  <td>{groceryData.cost}</td>
+                  <td>${groceryData.cost}</td>
                   <td>{groceryData.type}</td>
                   <td>{groceryData.expiration}</td>
                   <Button variant="outline-danger" onClick={() => handleGroceryDelete(groceryData._id)}>Delete</Button>
@@ -130,8 +130,9 @@ const HomePage = () => {
           </Table>
         </Container>
       </div>
-      <div className='container flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col'>
       <h3 className='ms-2 mt-2 fs-5'>Go to the Recipes tab at the top to save your favorite recipes and they'll display below.</h3>
+      <div className='container flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col'>
+      
         <Container>
           <Row>
             {items.map((food) => (

@@ -27,6 +27,7 @@ const NewRecipePage = () => {
       
       return (
         <Container className="mt-4"> 
+        <h3 className='ms-2 mt-2 fs-5'>Add your favorite recipes below and they'll display on your home page.</h3>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Item</Form.Label>
@@ -35,27 +36,27 @@ const NewRecipePage = () => {
     
           <Form.Group>
             <Form.Label>Protein</Form.Label>
-            <Form.Control type="text" name="protein" placeholder="Protein" onChange={handleChange} />
+            <Form.Control type="text" name="protein" placeholder="Protein(grams)" onChange={handleChange} />
           </Form.Group>
     
           <Form.Group>
             <Form.Label>Fat</Form.Label>
-            <Form.Control type="text" name="fat" placeholder="Fat" onChange={handleChange} />
+            <Form.Control type="text" name="fat" placeholder="Fat(grams)" onChange={handleChange} />
           </Form.Group>
     
           <Form.Group>
             <Form.Label>Carbs</Form.Label>
-            <Form.Control type="text" name="carbs" placeholder="Carbs" onChange={handleChange} />
+            <Form.Control type="text" name="carbs" placeholder="Carbs(grams)" onChange={handleChange} />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Image URL</Form.Label>
-            <Form.Control type="text" name="image" placeholder="Image URL" onChange={handleChange} />
+            <Form.Control type="text" name="image" placeholder="Add your food Image URL" onChange={handleChange} />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Note</Form.Label>
-            <Form.Control type="text" name="note" placeholder="Note" onChange={handleChange} />
+            <Form.Control type="text" name="note" placeholder="Add your recipe directions here" onChange={handleChange} />
           </Form.Group>
     
           <Button variant="primary" type="submit">

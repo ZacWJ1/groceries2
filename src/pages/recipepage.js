@@ -25,7 +25,9 @@ const RecipePage = () => {
         fetchItem();
       }, [id]);
   return (
+    
     <Container className="mt-4">
+      
       <Card>
       <div style={{ maxHeight: '500px', overflow: 'hidden' }}>
           <Card.Img className="img-fluid" variant="top" src={food.image} alt={food.title} />
