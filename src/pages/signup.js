@@ -37,7 +37,7 @@ function SignUp(){
     const row = {display:"flex", marginTop:"2rem"}
     const btnStyle={marginTop:"2rem", fontSize:"1.2rem", fontWeight:"700", backgroundColor:"blue", borderRadius:"0.5rem"};
     return (
-        <div>
+        <div className="login-background">
             
             <Grid2 align="center" className="wrapper">
                 <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -49,7 +49,7 @@ function SignUp(){
                                 </div>
                                 <h1 className='fs-1 font-bold underline ms-2 mt-2 text-success'>Groceries <br/>
             </h1>
-            <h2 className='fs-3 font-bold underline ms-2 mt-2' color="white">Eat Better When You Plan Better</h2>
+            <h2 className='fs-3 font-bold underline ms-2 mt-2 loginh2' >Eat Better When You Plan Better</h2>
                 <Paper elevation={1} style={paperStyle} sx={{width: {
                     xs: '80vw',     // 0
                     sm: '50vw',     // 600
