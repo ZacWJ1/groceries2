@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Grid, Link, Button, Paper, TextField, Typography, CircularProgress } from "@mui/material";
+import { Grid2, Link, Button, Paper, TextField, Typography, CircularProgress } from "@mui/material";
 
 function Login({ setIsLoggedIn }) {
     const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ function Login({ setIsLoggedIn }) {
 
     return (
         <div>
-            <Grid align="center" className="wrapper">
+            <Grid2 align="center" className="wrapper">
                 <Paper style={paperStyle} sx={{ width: { xs: '80vw', sm: '50vw', md: '40vw', lg: '30vw', xl: '20vw' }, height: { lg: '50vh' } }}>
                     <Typography component="h1" variant="h5" style={heading}>Login</Typography>
                     {loading ? (
@@ -60,7 +60,7 @@ function Login({ setIsLoggedIn }) {
                     )}
                     <p>Don't have an account? <Link href="/signup">SignUp</Link></p>
                 </Paper>
-            </Grid>
+            </Grid2>
         </div>
     );
 }
