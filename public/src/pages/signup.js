@@ -26,14 +26,14 @@ function SignUp(){
                 }
             });
     };
-    const paperStyle = { padding: "2rem", margin: "100px auto" };
+   // const paperStyle = { padding: "2rem", margin: "100px auto" };
     const heading = { fontSize: "2.5rem", fontWeight: "600" };
     const row = { display: "flex", marginTop: "2rem" };
     const btnStyle = { marginTop: "2rem", fontSize: "1.2rem", fontWeight: "700", backgroundColor: "blue", borderRadius: "0.5rem" };
     return (
         <div>
-            <Grid2 align="center" className="wrapper">
-                            <Paper elevation={1} >
+            <Grid2 align="center" >
+                            <Paper  >
                                 <Typography component="h1" variant="h5" style={heading}>Login</Typography>
                     <form onSubmit={handleSignup}>
                         <TextField style={row} sx={{label: { fontWeight: '700', fontSize:"1.3rem" }}} fullWidth type="text" label="Enter Name" name="name" onChange={(e)=>setName(e.target.value)}></TextField>
