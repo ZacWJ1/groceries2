@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Grid, Link, Button, Paper, TextField, Typography } from "@mui/material";
+import { Grid2, Link, Button, Paper, TextField, Typography } from "@mui/material";
 
 
 function SignUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+    const navigate = useNavigate();s
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -32,7 +32,7 @@ function SignUp(){
     const btnStyle={marginTop:"2rem", fontSize:"1.2rem", fontWeight:"700", backgroundColor:"blue", borderRadius:"0.5rem"};
     return (
         <div>
-            <Grid align="center" className="wrapper">
+            <Grid2 align="center" className="wrapper">
                 <Paper style={paperStyle} sx={{width: {
                     xs: '80vw',     // 0
                     sm: '50vw',     // 600
@@ -41,7 +41,7 @@ function SignUp(){
                     xl: '20vw',     // 1536 
                 },
                 height:{
-                    lg: '60vh',     // 1200px and up
+                    lg: '50vh',     // 1200px and up
                 }}}>
                     <Typography component="h1" variant="h5" style={heading}> Signup </Typography>
                     <form onSubmit={handleSignup}>
@@ -52,7 +52,7 @@ function SignUp(){
                     </form>
                     <p>Already have an account?<Link href="/login"> Login</Link></p>
                 </Paper>
-            </Grid>
+            </Grid2>
         </div>
     )
 }
