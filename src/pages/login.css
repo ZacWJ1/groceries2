@@ -13,6 +13,6 @@
   }
 
 loginht{
-    color: white;
-    background-color: black;
+    color: white !important;
+    background-color: black !important;
 }
